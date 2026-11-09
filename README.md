@@ -2,8 +2,6 @@
   <img src="takeoff.svg" width="100%" alt="avião decolando em ASCII" />
 </p>
 
-<h3 align="center"><code>aeroflow846-GPI@github ~ $ cat sobre.md</code></h3>
-
 <p align="center">
   ✈️ <b>Aeroflow</b> é um projeto aeronáutico que explora a integração entre
   <b>tecnologia</b>, <b>engenharia</b> e <b>inovação</b> no setor da aviação.
@@ -15,7 +13,6 @@
   criatividade e trabalho em equipe.
 </p>
 
-<h3 align="center"><code>aeroflow846-GPI@github ~ $ ls areas/</code></h3>
 
 <p align="center">
   <code>engenharia-aeronautica</code>
