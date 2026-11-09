@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="380" viewBox="0 0 820 380">
+  <style>
+    .mono { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; }
+    .t   { font-size: 12px; fill: #8b949e; }
+    .a   { font-size: 13px; fill: #c9d1d9; white-space: pre; }
+    .dim { fill: #30363d; }
+    .mid { fill: #484f58; }
+    .g   { fill: #3fb950; }
+    .b   { fill: #58a6ff; }
+
+    /* ciclo total: 12s */
+    .plane   { animation: fly 12s infinite; }
+    .wheels  { animation: wheels 12s infinite; }
+    .exhaust { animation: exhaust 0.15s steps(2) infinite, exhaustVis 12s infinite; }
+    .trail   { animation: trail 12s infinite; }
+    .runway  { animation: scroll 0.6s linear infinite; }
+    .clouds  { animation: clouds 24s linear infinite; }
+    .typed   { animation: type 12s steps(16) infinite; }
+    .out     { animation: out 12s infinite; }
+    .cursor  { animation: blink 1s steps(1) infinite; }
+    .light   { animation: blink 0.8s steps(1) infinite; }
+
+    @keyframes fly {
+      0%, 10% { transform: translate(70px, 0) rotate(0deg); animation-timing-function: cubic-bezier(.55,0,.9,.6); }
+      48%     { transform: translate(330px, 0) rotate(0deg); animation-timing-function: ease-in; }
+      56%     { transform: translate(430px, -30px) rotate(-9deg); animation-timing-function: linear; }
+      78%     { transform: translate(900px, -250px) rotate(-12deg); }
+      100%    { transform: translate(900px, -250px) rotate(-12deg); }
+    }
+    @keyframes wheels { 0%, 52% { opacity: 1; } 55%, 100% { opacity: 0; } }
+    @keyframes exhaustVis { 0%, 10% { opacity: 0; } 12%, 78% { opacity: 1; } 80%, 100% { opacity: 0; } }
+    @keyframes exhaust { 0% { transform: translateX(0); } 100% { transform: translateX(-4px); } }
+    @keyframes trail { 0%, 52% { opacity: 0; } 58%, 76% { opacity: .9; } 90%, 100% { opacity: 0; } }
+    @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-48px); } }
+    @keyframes clouds { from { transform: translateX(0); } to { transform: translateX(-820px); } }
+    @keyframes type { 0% { width: 0; } 9%, 100% { width: 130px; } }
+    @keyframes out { 0%, 80% { opacity: 0; } 82%, 97% { opacity: 1; } 100% { opacity: 0; } }
+    @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0; } }
+  </style>
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0d1117"/>
+      <stop offset="1" stop-color="#0b1426"/>
+    </linearGradient>
+    <clipPath id="screen"><rect x="1" y="30" width="818" height="318"/></clipPath>
+    <clipPath id="typeclip"><rect class="typed" x="205" y="350" width="130" height="30"/></clipPath>
+  </defs>
+
+  <!-- janela do terminal -->
+  <rect x="0.5" y="0.5" width="819" height="379" rx="8" fill="url(#bg)" stroke="#21262d"/>
+  <rect x="0.5" y="0.5" width="819" height="30" rx="8" fill="#0d1117"/>
+  <line x1="0" y1="30.5" x2="820" y2="30.5" stroke="#21262d"/>
+  <circle cx="18" cy="15" r="5" fill="#ff5f56"/>
+  <circle cx="36" cy="15" r="5" fill="#ffbd2e"/>
+  <circle cx="54" cy="15" r="5" fill="#27c93f"/>
+  <text class="mono t" x="410" y="19" text-anchor="middle">aeroflow846-GPI@github: ~$ ./takeoff.sh</text>
+
+  <g clip-path="url(#screen)" class="mono">
+    <!-- estrelas -->
+    <text class="a mid" font-size="11">
+      <tspan x="90"  y="60">.</tspan><tspan x="260" y="78">*</tspan><tspan x="420" y="54">.</tspan>
+      <tspan x="610" y="70">.</tspan><tspan x="730" y="96">*</tspan><tspan x="170" y="120">.</tspan>
+      <tspan x="520" y="112">.</tspan><tspan x="690" y="140">.</tspan><tspan x="350" y="150">*</tspan>
+    </text>
+
+    <!-- nuvens (duas cópias para loop contínuo) -->
+    <g class="clouds">
+      <g class="a dim">
+        <text x="120" y="92">   .--.</text><text x="120" y="108">.-(    ).</text><text x="120" y="124">(___.__)__)</text>
+        <text x="560" y="128">  .-~~-.</text><text x="560" y="144">(  ~~~  )-.</text><text x="560" y="160"> `-.___.--'</text>
+        <text x="940" y="92">   .--.</text><text x="940" y="108">.-(    ).</text><text x="940" y="124">(___.__)__)</text>
+        <text x="1380" y="128">  .-~~-.</text><text x="1380" y="144">(  ~~~  )-.</text><text x="1380" y="160"> `-.___.--'</text>
+      </g>
+    </g>
+
+    <!-- torre de controle -->
+    <g class="a mid">
+      <text x="14" y="224">  _[]_</text>
+      <text x="14" y="240"> |____|</text>
+      <text x="14" y="256">   ||</text>
+      <text x="14" y="272">   ||</text>
+      <text x="14" y="288">  _||_</text>
+    </g>
+    <text class="a g light" x="38" y="219">•</text>
+
+    <!-- pista -->
+    <text class="a mid" x="0" y="304">════════════════════════════════════════════════════════════════════════════════════════════════════════════</text>
+    <g class="runway">
+      <text class="a mid" x="0" y="320">  ▬▬    ▬▬    ▬▬    ▬▬    ▬▬    ▬▬    ▬▬    ▬▬    ▬▬    ▬▬    ▬▬    ▬▬    ▬▬    ▬▬    ▬▬    ▬▬    ▬▬    ▬▬    ▬▬    ▬▬</text>
+    </g>
+    <text class="a mid" x="0" y="336">════════════════════════════════════════════════════════════════════════════════════════════════════════════</text>
+    <text class="a b" x="20" y="320" font-size="11">09</text>
+    <text class="a b" x="790" y="320" font-size="11">27</text>
+
+    <!-- avião -->
+    <g transform="translate(60, 222)">
+      <g class="plane" style="transform-origin: 120px 60px">
+        <g class="trail">
+          <text class="a mid" x="-150" y="38">- - - - - - - -</text>
+          <text class="a mid" x="-130" y="54">- - - - - - -</text>
+        </g>
+        <g class="exhaust">
+          <text class="a mid" x="-34" y="46">≈≈</text>
+        </g>
+        <text class="a" x="0" y="0"> __</text>
+        <text class="a" x="0" y="16"> \ \______________________</text>
+        <text class="a" x="0" y="32"> [==  ▫ ▫ ▫ ▫ ▫ ▫ ▫ ▫ ▫  ▫▫ \__</text>
+        <text class="a" x="0" y="48">  \_______======______________)</text>
+        <text class="a" x="0" y="64">         /__/</text>
+        <g class="wheels">
+          <text class="a" x="0" y="78">      o            o     o</text>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <!-- prompt final -->
+  <line x1="0" y1="348.5" x2="820" y2="348.5" stroke="#21262d"/>
+  <text class="mono t" x="14" y="368">aeroflow846-GPI@github:~$</text>
+  <g clip-path="url(#typeclip)">
+    <text class="mono t" x="209" y="368" fill="#c9d1d9" style="fill:#c9d1d9">./takeoff.sh</text>
+  </g>
+  <text class="mono t out" x="321" y="368"><tspan class="g">✓</tspan> wheels up · rumo ao próximo deploy</text>
+</svg>
